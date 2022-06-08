@@ -11,7 +11,7 @@ GitHub：https://github.com/imsyy/home
 */
 var server = "netease"; //netease: 网易云音乐; tencent: QQ音乐; kugou: 酷狗音乐; xiami: 虾米; kuwo: 酷我
 var type = "playlist"; //song: 单曲; playlist: 歌单; album: 唱片
-var id = "7452421335"; //封面 ID / 单曲 ID / 歌单 ID
+var id = "7187578428"; //封面 ID / 单曲 ID / 歌单 ID
 
 $.ajax({
     url: "https://api.wuenci.com/meting/api/?server=" + server + "&type=" + type + "&id=" + id, //json文件位置，文件名
@@ -137,7 +137,7 @@ $.ajax({
                 timeout: 8000,
                 icon: "fa-solid fa-circle-exclamation",
                 displayMode: 'replace',
-                message: '音乐播放器加载失败'
+                message: '音樂播放器載入失敗'
             });
         }, 3800);
     }

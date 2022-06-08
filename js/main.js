@@ -31,13 +31,13 @@ window.addEventListener('load', function () {
             timeout: 2500,
             icon: false,
             title: hello,
-            message: '欢迎来到我的主页'
+            message: '歡迎來到我的個人主頁!'
         });
     }, 800);
 }, false)
 
 setTimeout(function () {
-    $('#loading-text').html("字体及文件加载可能需要一定时间")
+    $('#loading-text').html("字體與文件加載需要一定的時間")
 }, 3000);
 
 //延迟加载音乐播放器
@@ -79,7 +79,7 @@ if (isFirefox = navigator.userAgent.indexOf("Firefox") > 0) {
             iziToast.show({
                 timeout: 8000,
                 icon: "fa-solid fa-circle-exclamation",
-                message: '您正在使用火狐浏览器，部分功能可能不支持'
+                message: '您正在使用 Firefox 瀏覽器，某部份功能將會不支持'
             });
         }, 3800);
     }, false)
@@ -115,7 +115,7 @@ $('#hitokoto').click(function () {
         iziToast.show({
             timeout: 2000,
             icon: "fa-solid fa-circle-exclamation",
-            message: '你点太快了吧'
+            message: '不要點那麼快啦 QAQ'
         });
     }
 });
@@ -123,15 +123,13 @@ $('#hitokoto').click(function () {
 //获取天气
 //每日限量 100 次
 //请前往 https://www.tianqiapi.com/ 申请（免费）
-fetch('https://www.yiketianqi.com/free/day?appid=43656176&appsecret=I42og6Lm&unescape=1')
+fetch('https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-B70BD04A-9F4C-466B-808C-0BF84DB092A8&limit=1&offset=0&format=JSON&locationName=%E6%96%B0%E7%AB%B9%E7%B8%A3')
     .then(response => response.json())
     .then(data => {
-        $('#wea_text').html(data.wea)
-        $('#city_text').html(data.city)
-        $('#tem_night').html(data.tem_night)
-        $('#tem_day').html(data.tem_day)
-        $('#win_text').html(data.win)
-        $('#win_speed').html(data.win_speed)
+        $('#wea_text').html(data.records.location[0].weatherElement[0].time[0].parameter.parameterName)
+        $('#city_text').html(data.records.location[0].locationName)
+        $('#tem_night').html(data.records.location[0].weatherElement[2].time[1].parameter.parameterName)
+        $('#tem_day').html(data.records.location[0].weatherElement[4].time[0].parameter.parameterName)
     })
     .catch(console.error)
 
@@ -188,27 +186,37 @@ $("#social").mouseover(function () {
 $("#github").mouseover(function () {
     $("#link-text").html("去 Github 看看");
 }).mouseout(function () {
-    $("#link-text").html("通过这里联系我");
+    $("#link-text").html("通過這些聯繫我");
 });
 $("#qq").mouseover(function () {
-    $("#link-text").html("有什么事吗");
+    $("#link-text").html("有什麼事嗎");
 }).mouseout(function () {
-    $("#link-text").html("通过这里联系我");
+    $("#link-text").html("通過這些聯繫我");
+});
+$("#steam").mouseover(function () {
+    $("#link-text").html("跟我玩遊戲");
+}).mouseout(function () {
+    $("#link-text").html("通過這些聯繫我");
+});
+$("#bilibili").mouseover(function () {
+    $("#link-text").html("來看下影片!");
+}).mouseout(function () {
+    $("#link-text").html("通過這些聯繫我");
 });
 $("#email").mouseover(function () {
-    $("#link-text").html("来封 Email");
+    $("#link-text").html("來封 Email");
 }).mouseout(function () {
-    $("#link-text").html("通过这里联系我");
+    $("#link-text").html("通過這些聯繫我");
 });
 $("#telegram").mouseover(function () {
-    $("#link-text").html("你懂的 ~");
+    $("#link-text").html("跟我聊聊天 ~");
 }).mouseout(function () {
-    $("#link-text").html("通过这里联系我");
+    $("#link-text").html("通過這些聯繫我");
 });
 $("#twitter").mouseover(function () {
-    $("#link-text").html("你懂的 ~");
+    $("#link-text").html("來看看w");
 }).mouseout(function () {
-    $("#link-text").html("通过这里联系我");
+    $("#link-text").html("通過這些聯繫我");
 });
 
 //更多页面切换
@@ -217,12 +225,12 @@ $('#switchmore').on('click', function () {
     shoemore = !shoemore;
     if (shoemore && $(document).width() >= 990) {
         $('#container').attr('class', 'container mores');
-        $("#change").html("Oops&nbsp;!");
-        $("#change1").html("哎呀，这都被你发现了（ 再点击一次可关闭 ）");
+        $("#change").html("MEOW&nbsp;!");
+        $("#change1").html("好癢w，你竟然發現了我!（ 再次點擊關閉 ）");
     } else {
         $('#container').attr('class', 'container');
-        $("#change").html("Hello&nbsp;World&nbsp;!");
-        $("#change1").html("一个建立于 21 世纪的小站，存活于互联网的边缘");
+        $("#change").html("Hello&nbsp;This&nbsp;Beautiful&nbsp;World&nbsp;!");
+        $("#change1").html("為了更好的生活奮鬥");
     }
 });
 
@@ -271,7 +279,7 @@ window.addEventListener('load', function () {
             //移动端隐藏更多页面
             $('#container').attr('class', 'container');
             $("#change").html("Hello&nbsp;World&nbsp;!");
-            $("#change1").html("一个建立于 21 世纪的小站，存活于互联网的边缘");
+            $("#change1").html("為了更好的生活奮鬥");
 
             //移动端隐藏弹窗页面
             $('#box').css("display", "none");
@@ -304,32 +312,9 @@ document.oncontextmenu = function () {
     iziToast.show({
         timeout: 2000,
         icon: "fa-solid fa-circle-exclamation",
-        message: '为了浏览体验，本站禁用右键'
+        message: '為提高瀏覽體驗，此網站禁用右鍵'
     });
     return false;
-}
-
-//自动变灰
-var myDate = new Date;
-var mon = myDate.getMonth() + 1;
-var date = myDate.getDate();
-var days = ['4.4', '5.12', '7.7', '9.9', '9.18', '12.13'];
-for (var day of days) {
-    var d = day.split('.');
-    if (mon == d[0] && date == d[1]) {
-        document.write(
-            '<style>html{-webkit-filter:grayscale(100%);-moz-filter:grayscale(100%);-ms-filter:grayscale(100%);-o-filter:grayscale(100%);filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);_filter:none}</style>'
-        )
-        $("#change").html("Silence&nbsp;in&nbsp;silence");
-        $("#change1").html("今天是中国国家纪念日，全站已切换为黑白模式");
-        window.addEventListener('load', function () {
-            iziToast.show({
-                timeout: 14000,
-                icon: "fa-solid fa-candle-holder",
-                message: '今天是中国国家纪念日'
-            });
-        }, false);
-    }
 }
 
 //控制台输出
@@ -345,7 +330,7 @@ color: rgb(244,167,89);
 var styleContent = `
 color: rgb(30,152,255);
 `
-var title1 = '無名の主页'
+var title1 = '誠誠の個人主頁'
 var title2 = `
  _____ __  __  _______     ____     __
 |_   _|  \\/  |/ ____\\ \\   / /\\ \\   / /

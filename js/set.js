@@ -86,7 +86,7 @@ $(document).ready(function () {
             iziToast.show({
                 icon: "fa-solid fa-image",
                 timeout: 2500,
-                message: '壁纸设置成功',
+                message: '壁紙設定成功',
             });
         }
 
@@ -96,7 +96,7 @@ $(document).ready(function () {
             iziToast.show({
                 icon: "fa-solid fa-image",
                 timeout: 2500,
-                message: '壁纸设置成功',
+                message: '壁紙設定成功',
             });
         }
 
@@ -106,7 +106,7 @@ $(document).ready(function () {
             iziToast.show({
                 icon: "fa-solid fa-image",
                 timeout: 2500,
-                message: '壁纸设置成功',
+                message: '壁紙設定成功',
             });
         }
 
